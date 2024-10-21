@@ -6,12 +6,11 @@ Base = declarative_base()
 Session = sessionmaker(engine)
 session1 = Session()
 
-mahsol_human=Table("mahsool_human", Base.metadata,
-                   Column("id",Integer,primary_key=True),
+mahsol_human = Table("mahsool_human", Base.metadata,
+                   #Column("id", Integer, primary_key=True),
                    Column("human_id", Integer, ForeignKey("human.id")),
                    Column("mahsool_id", Integer, ForeignKey("mahsool.id"))
                    )
-
 
 class human(Base):
     __tablename__ = "human"
@@ -69,6 +68,7 @@ class Repisitory():
         
     def delete(self,id,obj):        
         record=self.Select_by_id(id,obj)
+
         session1.delete(record)
         session1.commit()
         return True
@@ -82,4 +82,4 @@ mahsool1=mahsool("apple watch",252,1)
 humans1.mahsool.append(mahsool1)
 session1.commit()
 #repository.update(4,mahsool,name="teshert",ghimat=150,tedad=2)
-#repository.delete(6,mahsool)
+#repository.delete(1,human)
