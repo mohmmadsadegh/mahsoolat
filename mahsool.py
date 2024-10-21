@@ -47,7 +47,7 @@ class Repisitory():
         return True
     
     def Select_all(self, obj):
-        result = session1.query(obj).all()
+        result = session1.query(obj).order_by(obj.id.desc()).limit(3).all()
         return result
     
     def Select_by_id(self, id, obj):
@@ -77,9 +77,9 @@ class Repisitory():
 Base.metadata.create_all(engine)
 repository = Repisitory()
 humans1 = human("ali", "moradi")
-session1.add(humans1)
+#session1.add(humans1)
 mahsool1=mahsool("apple watch",252,1)
-humans1.mahsool.append(mahsool1)
+#humans1.mahsool.append(mahsool1)
 session1.commit()
 #repository.update(4,mahsool,name="teshert",ghimat=150,tedad=2)
 #repository.delete(1,human)
